@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Pneumonia Detection</h1>
+            <p class="subtitle">AI-powered chest X-ray analysis</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="app-container">
+            <div class="upload-section">
+                <h2>Upload X-Ray Image</h2>
+                <p>Select a chest X-ray image to analyze for signs of pneumonia</p>
+                
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="upload-area" id="dropArea">
+                        <div class="upload-icon">📁</div>
+                        <p>Drag & drop your X-ray image here or click to browse</p>
+                        <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="progress-bar hidden" id="progressBar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <button type="submit" class="btn" id="predictBtn" disabled>Analyze Image</button>
+                </form>
+                
+                <img id="imagePreview" class="image-preview" alt="Preview of uploaded X-ray">
+            </div>
+            
+            <div class="result-section">
+                <h2>Analysis Results</h2>
+                <p>Results will appear here after analysis</p>
+                
+                <div class="result-display" id="resultDisplay">
+                    <div id="initialMessage">
+                        <p>Upload and analyze an X-ray image to see the results.</p>
+                    </div>
+                    
+                    <div id="results" class="hidden">
+                        <h3>Diagnosis:</h3>
+                        <div class="prediction" id="predictionResult"></div>
+                        <img id="resultImage" class="image-preview" alt="Analyzed X-ray">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>About This Tool</h2>
+            <p>This app uses artificial intelligence to analyze chest X-ray images for signs of pneumonia. The AI model has been trained on thousands of X-ray images to detect patterns associated with pneumonia.</p>
+            
+            <h3>How to Use:</h3>
+            <ol>
+                <li>Upload a clear chest X-ray image (JPG or PNG format)</li>
+                <li>Click "Analyze Image" to process the X-ray</li>
+                <li>View the results indicating either "Normal" or "Pneumonia detected"</li>
+            </ol>
+            
+            <div class="disclaimer">
+                <h3>Important Disclaimer:</h3>
+                <p>This tool is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Pneumonia Detection Tool | All rights reserved</p>
+        <p>Follow the developer on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a></p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
